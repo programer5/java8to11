@@ -20,10 +20,24 @@ public class Foo {
 //        Predicate<String> startsWithMinseo = (s) -> s.startsWith("minseo");
 //        Predicate<Integer> isEven = (i) -> i % 2 == 0;
 
+        Foo foo = new Foo();
+        foo.run();
+
+
         UnaryOperator<Integer> plus10 = (i) -> i + 10;
         UnaryOperator<Integer> multiply2 = (i) -> i * 2;
 
         System.out.println(plus10.andThen(multiply2).apply(2));
 
+    }
+
+    private void run() {
+
+        int baseNumber = 10;
+
+        IntConsumer printInt = (i) -> {
+            System.out.println(i + baseNumber);
+        };
+        printInt.accept(10);
     }
 }
