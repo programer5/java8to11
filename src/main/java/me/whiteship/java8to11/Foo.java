@@ -1,43 +1,20 @@
 package me.whiteship.java8to11;
 
-import java.util.function.*;
+public interface Foo {
 
-public class Foo {
+    void printName();
 
-    public static void main(String[] args) {
-//        Function<Integer, Integer> plus10 = (number) -> number + 10;
-//        Function<Integer, Integer> multiply2 = (i) -> i * 2;
-//
-//        System.out.println(plus10.andThen(multiply2).apply(2));
-
-//        Consumer<Integer> printT = (i) -> System.out.println(i);
-//        printT.accept(10);
-
-//        Supplier<Integer> get10 = () -> 10;
-//
-//        System.out.println("get10 = " + get10);
-
-//        Predicate<String> startsWithMinseo = (s) -> s.startsWith("minseo");
-//        Predicate<Integer> isEven = (i) -> i % 2 == 0;
-
-        Foo foo = new Foo();
-        foo.run();
-
-
-        UnaryOperator<Integer> plus10 = (i) -> i + 10;
-        UnaryOperator<Integer> multiply2 = (i) -> i * 2;
-
-        System.out.println(plus10.andThen(multiply2).apply(2));
-
+    /**
+     * @implSpec
+     * 이 구현체는 getName()으로 가져온 문자열을 대문자로 바꿔 출력한다.
+     */
+    default void printNameUpperCase() {
+        System.out.println(getName().toUpperCase());
     }
 
-    private void run() {
-
-        int baseNumber = 10;
-
-        IntConsumer printInt = (i) -> {
-            System.out.println(i + baseNumber);
-        };
-        printInt.accept(10);
+    static void printAnyThing() {
+        System.out.println("FOO");
     }
+
+    String getName();
 }
